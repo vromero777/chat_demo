@@ -6,34 +6,40 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Chat</title>
     <!---css--->
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/main.css">
     <!---JS--->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script type="module" src="js/index.js"></script>
 </head>
 <body>
-    <main id="chat">
+    <main id="app">
         <div class="container">
             <header>
                 <h1>Chat</h1>
             </header>
-            <section>
+            <section class="mensajes" ref="mensajesContenedor">
                 <ul class="collection">
-                    <li class="collection-item"><strong>Nombre:</strong>Mensaje</li>
+                    <li
+                            class="collection-item"
+                            v-for = "message in messages"
+                    >
+                        <strong>{{ message.name }}</strong> {{ message.content }}
+                    </li>
                 </ul>
             </section>
             <section>
                 <div class="row">
                     <form class="col s12">
                         <div class="input-field col s12">
-                            <input placeholder="Nombre" id="name" type="text" class="validate">
+                            <input v-model="nameSender" placeholder="Nombre" id="name" type="text" class="validate">
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea placeholder="Mensaje" id="message" class="materialize-textarea"></textarea>
+                                <textarea v-model="newMessage" placeholder="Mensaje" id="message" class="materialize-textarea"></textarea>
                             </div>
                         </div>
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                        <button @click.prevent="enviarMensaje"  class="btn waves-effect waves-light" type="submit" name="action">Enviar
                             <i class="material-icons right"></i>
                         </button>
                     </form>

@@ -1,5 +1,10 @@
 .container {
-    width: 30 rem;
+    width: 30rem;
     margin: 0 auto ;
-    padding: 1 rem;
+    padding: 1rem;
+}
+
+.mensajes {
+    height: 50vh;
+    overflow-y: auto;
 }

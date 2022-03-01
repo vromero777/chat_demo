@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/vromero777/chat_demo#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^1.30.7",
     "materialize-css": "^1.0.0-rc.2",
     "vue": "^3.2.31"
   }
